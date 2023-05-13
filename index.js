@@ -11,7 +11,7 @@ const questions = [
 /*
     {
         type: "input",
-        name: "project-name",
+        title: "title",
         message: "what is your project's name?",
     },
     {
@@ -47,3 +47,40 @@ function init() {
 
 // Function call to initialize app
 init();
+
+const generateREADME = ({name, username, description}) => 
+`
+# ${name}
+
+## ${username}
+
+## **Description**
+${description}
+
+
+`;
+
+inquirer
+.prompt([
+    {
+        type: "input",
+        name: "name",
+        message: "What is your project's title?",
+    },
+    
+    {
+        type: "input",
+        message: "What is your name?",
+        name: "username",
+    },
+
+    {
+        type: "input",
+        message: "Please add a description for your project",
+        name: "description",
+    },
+])
+.then((data) => {
+    const readmePageContent = generateREADME(data);
+    fs.writeFile("readme.md", readmePageContent, (err) => err ? console.log(err) : console.log("success!"));
+});
