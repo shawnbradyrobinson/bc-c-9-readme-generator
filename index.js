@@ -81,7 +81,7 @@ ${contribution}
 
 ## Questions
 If you have further questions, I can be contacted at: 
-- github.com/${githubQuestions}
+- (https://www.github.com/${githubQuestions})
 - ${emailQuestions}
 
 
