@@ -47,22 +47,21 @@ function init() {
 
 // Function call to initialize app
 init();
-
-const generateREADME = ({projectname, username, licenseBadge, description, installation, applicationLink, credits, license, contribution, githubQuestions, emailQuestions}) => 
+//const badgeValue = renderLicenseBadge(data.license);
+const generateREADME = ({projectname, username, description, installation, applicationLink, credits, license, contribution, githubQuestions, emailQuestions}) => 
 `
 # ${projectname}
 
 ## ${username}
 
-${licenseBadge}
 ## Table of Contents 
-1. [Description](/${projectname}_README.md/#description)
-2. [Installation](/${projectname}_README.md/#installation)
-3. [Application Link](/${projectname}_README.md/#application-link)
-4. [Credits](/${projectname}_README.md/#credits)
-5. [Contributing](/${projectname}_README.md/#contributing)
-6. [Tests](/${projectname}_README.md/#tests)
-7. [Questions](/${projectname}_README.md/#questions)
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Application Link](#application-link)
+4. [Credits](#credits)
+5. [Contributing](#contributing)
+6. [Tests](#tests)
+7. [Questions](#questions)
 ## **Description**
 ${description}
 
@@ -109,6 +108,11 @@ inquirer
     },
     {
         type: "input",
+        message: "How do you want people to install your project?",
+        name: "installation",
+    },
+    {
+        type: "input",
         message: "Please paste in your application link",
         name: "applicationLink",
     },
@@ -121,7 +125,7 @@ inquirer
         type: "list",
         message: "What license do you want to use for your project?",
         name: "license",
-        choices: ["MIT", "Apache License 2.0", "GNU General Public License v3.0", "Microsoft Public License"],
+        choices: ["MIT", "Apache License 2.0", "GNU General Public License v3.0"],
     },
     {
         type: "input",
@@ -141,6 +145,7 @@ inquirer
 
 ])
 .then((data) => {
+    
     switch (data.license){
         case "MIT":
         
@@ -151,7 +156,11 @@ inquirer
         
         The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
         
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        
+## License Link 
+[MIT License Link](https://opensource.org/license/mit/)
+`
         break;
         case "Apache License 2.0":
         console.log("Apache");
@@ -319,7 +328,9 @@ inquirer
         sole responsibility, not on behalf of any other Contributor, and only if You
         agree to indemnify, defend, and hold each Contributor harmless for any liability
         incurred by, or claims asserted against, such Contributor by reason of your
-        accepting any such warranty or additional liability.`
+        accepting any such warranty or additional liability.
+ ## License Link 
+[Apache License Link](https://www.apache.org/licenses/LICENSE-2.0)`
         break;
         case "GNU General Public License v3.0":
         console.log("GNU");
@@ -862,7 +873,9 @@ inquirer
         given local legal effect according to their terms, reviewing courts shall apply local
         law that most closely approximates an absolute waiver of all civil liability in
         connection with the Program, unless a warranty or assumption of liability accompanies
-        a copy of the Program in return for a fee.`
+        a copy of the Program in return for a fee.
+## License Link
+[GNU License Link](https://www.gnu.org/licenses/licenses.en.html)        `
         break;
     }
 
